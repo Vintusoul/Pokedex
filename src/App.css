@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper{
+  @apply  mt-5 gap-6 grid grid-cols-3 md:grid-flow-row;
+}
