@@ -38,5 +38,5 @@
 }
 
 .wrapper{
-  @apply  mt-5 gap-6 grid grid-cols-3 md:grid-flow-row;
+  @apply  mt-5 gap-6 grid grid-cols-4 md:grid-flow-row;
 }

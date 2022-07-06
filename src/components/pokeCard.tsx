@@ -1,32 +1,62 @@
+import { typeAlias } from "@babel/types";
+import axios from "axios";
+import React from "react";
+
 interface PokeCardProps {
-	className?: string;
-	img?: string;
-    title?: string;
-    onClick?: (event: React.MouseEvent) => void;
+  className?: string;
+  img?: string;
+  title?: string;
+  onClick?: (event: React.MouseEvent) => void;
+  pokemonID?: string;
+}
+
+interface Pokemon {
+  abilities?: [];
+  base_experience?: number;
+  types: [];
 }
 
 const PokeCard = (props: PokeCardProps): JSX.Element => {
-	const className = () => {
-		if (props.className) {
-			return props.className;
-		} else {
-			return "";
-		}
-	};
-	return (
-		<div className={`${className()}`} >
-			<a href="/" className="block p-4 rounded-lg shadow-sm shadow-indigo-100">
+  const [pokemon, setPokemon] = React.useState({} as Pokemon);
+  const className = () => {
+    if (props.className) {
+      return props.className;
+    } else {
+      return "";
+    }
+  };
+
+  const getPokemonDetails = () => {
+    const ENDPOINT = `https://pokeapi.co/api/v2/pokemon/${props.pokemonID}`;
+    axios(ENDPOINT)
+      .then((response: any) => {
+        //set state to false so it stops when u load it in
+        setPokemon(response.data);
+        console.log("Pokemon", response.data.results);
+      })
+      .catch((error) => {
+        <button>SOMETHING WENT WRONG</button>;
+        console.log(error);
+      });
+  };
+
+  return (
+    <div className={`${className()}`}>
+      <a href="/" className="block p-4 rounded-lg shadow-sm shadow-indigo-100">
         <img
-          src={props.img} alt="pokemon"
+          src={props.img}
+          alt="pokemon"
           className="w-full h-56 rounded-md"
         ></img>
 
         <div className="mt-2">
-          <dl>
-            <div>
-              <dd className="font-medium">{props.title}</dd>
-            </div>
-          </dl>
+          <div>
+            <dd className="font-medium">{props.title}</dd>
+          </div>
+
+          <div>
+            <dd className="font-light">{pokemon.types}</dd>
+          </div>
 
           <dl className="flex items-center mt-6 space-x-8 text-xs">
             <div className="sm:inline-flex sm:items-center sm:shrink-0">
@@ -94,8 +124,8 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
           </dl>
         </div>
       </a>
-		</div>
-	);
+    </div>
+  );
 };
 
 export default PokeCard;

@@ -1,16 +1,18 @@
-import './App.css';
-import PokeCard from './components/pokeCard';
+import "./App.css";
+import PokeCard from "./components/pokeCard";
 import axios from "axios";
 import React from "react";
 
 function App() {
   const [pokemons, setPokemon] = React.useState([]);
   React.useEffect(() => {
-    getAbilities();
+    getPokemon();
   }, []);
 
-  const getAbilities = () => {
-    const ENDPOINT = "https://pokeapi.co/api/v2/pokemon";
+  const [offset, setOffset] = React.useState(20);
+
+  const getPokemon = () => {
+    const ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`;
     axios(ENDPOINT)
       .then((response: any) => {
         //set state to false so it stops when u load it in
@@ -25,11 +27,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className='wrapper'>
-      <PokeCard img='' title=''/>
-      {pokemons == null ? (
+      <div className="wrapper">
+        {pokemons == null ? (
           <div className="w-full h-full">
-          <button>SOMETHING WENT WRONG</button>
+            <button>SOMETHING WENT WRONG</button>
           </div>
         ) : (
           pokemons.map((pokemon: { url: any; name: any }, index) => {
@@ -38,8 +39,9 @@ function App() {
                 key={index}
                 title={pokemon.name}
                 img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-                  index + 1
+                  pokemon.url.split("/")[6]
                 }.png`}
+                pokemonID={pokemon.url.split("/")[6]}
               />
             );
           })
