@@ -1,4 +1,3 @@
-import { typeAlias } from "@babel/types";
 import axios from "axios";
 import React from "react";
 
@@ -10,10 +9,27 @@ interface PokeCardProps {
   pokemonID?: string;
 }
 
+interface Util {
+  name: string;
+  url: string;
+}
+
+interface PokemonAbility {
+  ability: Util;
+  slot: number;
+  is_hidden: boolean;
+}
+
+interface PokemonType {
+  slot: number;
+  type: Util;
+}
+
 interface Pokemon {
-  abilities?: [];
-  base_experience?: number;
-  types: [];
+  abilities: Array<PokemonAbility>;
+  base_experience: number;
+  types: Array<PokemonType>;
+  stat: [];
 }
 
 const PokeCard = (props: PokeCardProps): JSX.Element => {
@@ -26,11 +42,15 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
     }
   };
 
+  // API Call
+  React.useEffect(() => {
+    getPokemonDetails();
+  }, []);
+
   const getPokemonDetails = () => {
     const ENDPOINT = `https://pokeapi.co/api/v2/pokemon/${props.pokemonID}`;
     axios(ENDPOINT)
       .then((response: any) => {
-        //set state to false so it stops when u load it in
         setPokemon(response.data);
         console.log("Pokemon", response.data.results);
       })
@@ -40,6 +60,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
       });
   };
 
+  // Card styling and details
   return (
     <div className={`${className()}`}>
       <a href="/" className="block p-4 rounded-lg shadow-sm shadow-indigo-100">
@@ -55,7 +76,11 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
           </div>
 
           <div>
-            <dd className="font-light">{pokemon.types}</dd>
+            <dd className="font-light">
+              {pokemon.types?.map((pokeType, _) => {
+                return pokeType.type.name;
+              })}
+            </dd>
           </div>
 
           <dl className="flex items-center mt-6 space-x-8 text-xs">
@@ -76,7 +101,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               </svg>
 
               <div className="sm:ml-3 mt-1.5 sm:mt-0">
-                <dt className="text-gray-500">Parking</dt>
+                <dt className="text-gray-500">Class</dt>
               </div>
             </div>
 
@@ -97,28 +122,11 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               </svg>
 
               <div className="sm:ml-3 mt-1.5 sm:mt-0">
-                <dt className="text-gray-500">Bathroom</dt>
-              </div>
-            </div>
-
-            <div className="sm:inline-flex sm:items-center sm:shrink-0">
-              <svg
-                className="w-4 h-4 text-indigo-700"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-
-              <div className="sm:ml-3 mt-1.5 sm:mt-0">
-                <dt className="text-gray-500">Bedroom</dt>
+                <dt className="text-gray-500">
+                  {pokemon.abilities?.map((pokeType, _) => {
+                    return pokeType.ability.name;
+                  })}
+                </dt>
               </div>
             </div>
           </dl>

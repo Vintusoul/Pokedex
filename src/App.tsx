@@ -2,6 +2,7 @@ import "./App.css";
 import PokeCard from "./components/pokeCard";
 import axios from "axios";
 import React from "react";
+import SearchBar from "./components/searchBar";
 
 function App() {
   const [pokemons, setPokemon] = React.useState([]);
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div className="App">
+      <SearchBar />
       <div className="wrapper">
         {pokemons == null ? (
           <div className="w-full h-full">
