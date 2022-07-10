@@ -37,6 +37,14 @@
   }
 }
 
+.loader{
+  @apply flex justify-center w-full h-16;
+}
+/* PokaCard */
 .wrapper{
-  @apply  mt-5 gap-6 grid grid-cols-4 md:grid-flow-row;
+  @apply sm:mt-5 gap-6 grid grid-cols-1 grid-flow-row-dense m-5 md:grid-cols-3 lg:grid-cols-5  ;
+}
+/* Type Badges */
+.Type-fire{
+  @apply bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900;
 }

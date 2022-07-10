@@ -33,7 +33,7 @@ interface Pokemon {
   results: Array<Util>;
 }
 
-const PokeCard = (props: PokeCardProps): JSX.Element => {
+const CardClick = (props: PokeCardProps): JSX.Element => {
   const [pokemon, setPokemon] = React.useState({} as Pokemon);
   const className = () => {
     if (props.className) {
@@ -79,7 +79,22 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
             </div>
             <div className="sm: text-xs flex flex-col mt-6 lg: text-m">
               <div className="sm:inline-flex flex flex-row sm:shrink-0">
+                {/* <svg
+                    className="w-4 h-4 text-indigo-700"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                    />
+                  </svg> */}
                 <div>TYPES:</div>
+
                 <div className="sm:ml-3 sm:inline-flex mt-1.5 sm:mt-0">
                   <dt className="text-gray-500">
                     {pokemon.types?.map((pokeType, _) => {
@@ -131,7 +146,31 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                   </dt>
                 </div>
               </div>
-              <div className="sm:inline-flex sm:items-center sm:mt-3 sm:shrink-0"></div>
+
+              <div className="sm:inline-flex sm:items-center sm:mt-3 sm:shrink-0">
+                {/* <svg
+                    className="w-4 h-4 text-indigo-700"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                    />
+                  </svg> */}
+
+                {/* <div className="sm:ml-3 mt-1.5 sm:mt-0">
+                    <dt className="text-gray-500 flex flex-row">
+                      {pokemon.abilities?.map((pokeType, _) => {
+                        return pokeType.ability.name.replace("-", " ");
+                      })}
+                    </dt>
+                  </div> */}
+              </div>
               <div className="mt-4 ">
                 <a href="/" className="text-gray-500">
                   Click for more info...
@@ -145,4 +184,4 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
   );
 };
 
-export default PokeCard;
+export default CardClick;
