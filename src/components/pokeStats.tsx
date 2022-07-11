@@ -36,11 +36,11 @@ const PokeStats = (): JSX.Element => {
   return (
     <div className={`${className()}`}>
       <a href="/" className="w-full h-full flex justify-center">
-        <div className=" m-6 block p-4 rounded-lg bg-white shadow-sm shadow-indigo-300 md:max-w-md">
+        <div className=" m-6 block p-4 rounded-lg shadow-sm bg-red-200 shadow-red-700 md:max-w-md">
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
             alt="pokemon"
-            className="w-full h-56 rounded-md"
+            className="h-56 rounded-md"
           ></img>
           <div className="mt-2">
             <div>
@@ -123,10 +123,18 @@ const PokeStats = (): JSX.Element => {
                   <dt className="text-gray-600 flex flex-row">
                     {pokemon.base_experience}
                   </dt>
+                  Weight:
+                  <dt className="text-gray-600 flex flex-row">
+                    {pokemon.weight}
+                  </dt>
+                  Height:
+                  <dt className="text-gray-600 flex flex-row">
+                    {pokemon.height}
+                  </dt>
                 </div>
               </div>
               <div className="mt-4">
-                <div className="text-blue-500">Click to return</div>
+                <div className="text-white font-bold">Click to return</div>
               </div>
             </div>
           </div>

@@ -67,18 +67,18 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
       <div>
         <Link
           to={`/pokemon/${props.pokemonID}`}
-          className="block p-4 rounded-lg shadow-sm shadow-indigo-300"
+          className="block p-4 rounded-lg shadow-sm bg-red-200 shadow-red-700"
         >
           <img
             src={props.img}
             alt="pokemon"
-            className="w-full h-56 rounded-md"
+            className="w-full h-auto rounded-md"
           ></img>
           <div className="mt-2">
             <div>
               <dd className="font-medium uppercase">{props.title}</dd>
             </div>
-            <div className="sm: text-xs flex flex-col mt-6 lg: text-m">
+            <div className="sm:text-xs flex flex-col mt-6 lg:text-m">
               <div className="sm:inline-flex flex flex-row sm:shrink-0">
                 <div>TYPES:</div>
                 <div className="sm:ml-3 sm:inline-flex mt-1.5 sm:mt-0">
@@ -134,7 +134,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               </div>
               <div className="sm:inline-flex sm:items-center sm:mt-3 sm:shrink-0"></div>
               <div className="mt-4 ">
-                <a href="/" className="text-gray-500">
+                <a href="/" className="text-white font-bold ">
                   Click for more info...
                 </a>
               </div>
