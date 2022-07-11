@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface PokeCardProps {
   className?: string;
@@ -64,8 +65,8 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
   return (
     <div className={`${className()}`}>
       <div>
-        <a
-          href="/"
+        <Link
+          to={`/pokemon/${props.pokemonID}`}
           className="block p-4 rounded-lg shadow-sm shadow-indigo-300"
         >
           <img
@@ -139,7 +140,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );
