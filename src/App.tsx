@@ -1,14 +1,16 @@
 import "./App.css";
-import PokeCard from "./components/pokeCard";
+import PokeCard, { Util } from "./components/pokeCard";
 import axios from "axios";
 import React from "react";
 import Navbar from "./components/navbar";
 import InfiniteScroll from "react-infinite-scroller";
 import Loader from "./components/loader";
+import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [pokemons, setPokemon] = React.useState([]);
-  const [searchInput, setInput] = React.useState([]);
+  const navigate = useNavigate();
+  const [pokemons, setPokemon] = React.useState([] as Array<Util>);
+  const [searchInput, setInput] = React.useState("");
 
   const getPokemons = async (page: number) => {
     const limit = 20;
@@ -17,7 +19,6 @@ function App() {
 
     try {
       const response = await axios(ENDPOINT);
-      //set state to false so it stops when u load it in
       setPokemon(pokemons.concat(response.data.results));
       console.log("Pokemon", response.data.results);
     } catch (error) {
@@ -30,18 +31,19 @@ function App() {
     console.log(searchInput);
   };
 
-  const searchPokemon = async (page: number) => {
-    const limit = 20;
-    const offset = page * limit;
+  const searchPokemon = async () => {
     let ENDPOINT = `https://pokeapi.co/api/v2/pokemon/${searchInput}`;
 
     try {
       const response = await axios(ENDPOINT);
-      //set state to false so it stops when u load it in
-      setPokemon(response.data);
-      console.log("Pokemon", response.data.results);
+      if (response.data.id) {
+        navigate(`/pokemon/${response.data.id}`);
+      } else {
+        alert("pokemon not found");
+      }
     } catch (error) {
       console.log(error);
+      alert("pokemon not found");
     }
   };
 
@@ -59,11 +61,16 @@ function App() {
             aria-describedby="button-addon2"
             value={searchInput}
             onChange={HandleInput}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                searchPokemon();
+              }
+            }}
           ></input>
           <button
             className="hover:bg-slate-500 cursor-grab bg-slate-700 input-group-text flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded"
             id="searchButton"
-            onClick={() => getPokemons(0)}
+            onClick={() => searchPokemon()}
           >
             <svg
               aria-hidden="true"

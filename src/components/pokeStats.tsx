@@ -1,19 +1,14 @@
 import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
-
-interface Util {
-  name: string;
-  url: string;
-}
+import Navbar from "./navbar";
+import "../App.css";
+import { Pokemon } from "./pokeCard";
 
 const PokeStats = (): JSX.Element => {
   let { id } = useParams();
 
-  const [pokemon, setPokemon] = React.useState({} as any);
-  const className = () => {
-    return "";
-  };
+  const [pokemon, setPokemon] = React.useState({} as Pokemon);
 
   // API Call
   React.useEffect(() => {
@@ -34,13 +29,14 @@ const PokeStats = (): JSX.Element => {
   };
   // Card styling and details
   return (
-    <div className={`${className()}`}>
-      <a href="/" className="w-full h-full flex justify-center">
-        <div className=" m-6 block p-4 rounded-lg shadow-sm bg-red-200 shadow-red-700 md:max-w-md">
+    <div className="w-full h-screen">
+      <Navbar />
+      <a href="/" className="w-full flex justify-center h-full">
+        <div className="w-5/12">
           <img
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
             alt="pokemon"
-            className="h-56 rounded-md"
+            className="w-full h-auto rounded-md"
           ></img>
           <div className="mt-2">
             <div>
@@ -49,7 +45,6 @@ const PokeStats = (): JSX.Element => {
             <div className="sm: text-xs flex flex-col mt-6 lg: text-m">
               <div className="sm:inline-flex flex flex-row sm:shrink-0">
                 <div>TYPES:</div>
-
                 <div className="sm:ml-3 sm:inline-flex mt-1.5 sm:mt-0">
                   <dt className="text-gray-500">
                     {pokemon.types?.map(
@@ -67,7 +62,7 @@ const PokeStats = (): JSX.Element => {
                             );
                           case "fire":
                             return (
-                              <p className="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900 ">
+                              <p className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 ">
                                 {pokeType.type.name}
                               </p>
                             );
