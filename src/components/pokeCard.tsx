@@ -25,6 +25,7 @@ interface PokemonType {
 }
 
 export interface Pokemon {
+  stats: any;
   abilities: Array<PokemonAbility>;
   base_experience: number;
   types: Array<PokemonType>;
@@ -57,22 +58,22 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
     <div>
       <Link
         to={`/pokemon/${props.pokemonID}`}
-        className=" block p-4 rounded-lg shadow-sm bg-red-200 shadow-red-700"
+        className=" font-pokemon text-md block p-4 rounded-lg shadow-sm bg-yellow-300 shadow-white"
       >
+        <div>
+          <dd className="font-medium uppercase">{props.title}</dd>
+        </div>
         <img
           src={props.img}
           alt="pokemon"
-          className="w-full h-auto rounded-md"
+          className="w-full h-auto border-2	 border-slate-600 bg-slate-200 rounded"
         ></img>
         <div className="mt-2">
-          <div>
-            <dd className="font-medium uppercase">{props.title}</dd>
-          </div>
           <div className="sm:text-xs flex flex-col mt-6 lg:text-m">
-            <div className="sm:inline-flex flex flex-row sm:shrink-0">
-              <div>TYPES:</div>
-              <div className="sm:ml-3 sm:inline-flex mt-1.5 sm:mt-0">
-                <dt className="text-gray-500">
+            <div className="sm:ml-3 inline-flex flex-row sm:shrink-0">
+              <div className="font-semibold">TYPES:</div>
+              <div className="sm: sm:inline-flex sm:mt-0">
+                <dt className="ml-3 flex flex-row w-full justify-around ">
                   {/* Pokemon Types */}
                   {pokemon.types?.map((pokeType, _) => {
                     switch (pokeType.type.name) {
@@ -124,11 +125,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               </div>
             </div>
             <div className="sm:inline-flex sm:items-center sm:mt-3 sm:shrink-0"></div>
-            <div className="mt-4 ">
-              <a href="/" className="text-white font-bold ">
-                Click for more info...
-              </a>
-            </div>
+            <div className="mt-4 font-semibold ">Click for more info...</div>
           </div>
         </div>
       </Link>

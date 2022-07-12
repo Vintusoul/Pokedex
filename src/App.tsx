@@ -68,7 +68,7 @@ function App() {
             }}
           ></input>
           <button
-            className="hover:bg-slate-500 cursor-grab bg-slate-700 input-group-text flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded"
+            className="hover:bg-slate-500 cursor-grab bg-pokemon-light-blue input-group-text flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded"
             id="searchButton"
             onClick={() => searchPokemon()}
           >
