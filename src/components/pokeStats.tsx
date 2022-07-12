@@ -31,7 +31,7 @@ const PokeStats = (): JSX.Element => {
     <>
       <Navbar />
       <div className="w-full h-auto flex justify-center ">
-        <div className=" font-pokemon flex flex-col items-center m-5 bg-yellow-300 rounded-lg border shadow-md md:flex-row  hover:bg-pokemon-light-blue hover:text-white lg:max-w-2xl">
+        <div className=" font-pokemon flex flex-col items-center m-5 rounded-lg border shadow-md md:flex-row  bg-pokemon-light-blue text-white lg:max-w-2xl">
           <div className="m-5 ">
             <h5 className="mb-2 flex justify-center text-2xl font-bold tracking-tight uppercase ">
               {pokemon.name}
@@ -44,7 +44,7 @@ const PokeStats = (): JSX.Element => {
           </div>
           <div className="flex flex-col w-full justify-between p-4 leading-normal">
             <div className="mb-3">
-              <div className="font-semibold lg:text-lg ">Types:</div>
+              <div className="font-semibold lg:text-lg mb-2">Types:</div>
               <div className=" mb-3 flex flew-row lg:text-lg  ">
                 {pokemon.types?.map(
                   (
@@ -124,7 +124,7 @@ const PokeStats = (): JSX.Element => {
                 )}
               </div>
               <h2 className=" font-semibold lg:text-lg  ">Abilities:</h2>
-              <div className=" mb-2  flex flex-col">
+              <div className=" mb-2 flex flex-col">
                 {pokemon.abilities?.map(
                   (pokeType: { ability: { name: string } }, index: any) => {
                     return (
@@ -149,7 +149,7 @@ const PokeStats = (): JSX.Element => {
 
       <div className="flex justify-center w-full">
         <Link to="/">
-          <button className="mb-5 font-pokemon bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+          <button className="mb-5 font-pokemon bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded">
             Return to Pokedex
           </button>
         </Link>
