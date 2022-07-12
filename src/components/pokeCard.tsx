@@ -58,10 +58,10 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
     <div>
       <Link
         to={`/pokemon/${props.pokemonID}`}
-        className=" font-pokemon text-md block p-4 rounded-lg shadow-sm bg-yellow-300 shadow-white"
+        className=" hover:animate-wiggle font-pokemon text-md block p-4 rounded-lg shadow-md bg-yellow-300 shadow-pokemon-light-blue hover:bg-pokemon-light-blue hover:text-white "
       >
         <div>
-          <dd className="font-medium uppercase">{props.title}</dd>
+          <dd className="font-bold uppercase">{props.title}</dd>
         </div>
         <img
           src={props.img}
@@ -74,48 +74,47 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               <div className="font-semibold">TYPES:</div>
               <div className="sm: sm:inline-flex sm:mt-0">
                 <dt className="ml-3 flex flex-row w-full justify-around ">
-                  {/* Pokemon Types */}
-                  {pokemon.types?.map((pokeType, _) => {
+                  {pokemon.types?.map((pokeType, index) => {
                     switch (pokeType.type.name) {
                       case "water":
                         return (
-                          <p className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                          <p className="bg-blue-100 text-blue-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
                             {pokeType.type.name}
                           </p>
                         );
                       case "fire":
                         return (
-                          <p className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 ">
+                          <p className="bg-red-800 text-red-100 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 ">
                             {pokeType.type.name}
                           </p>
                         );
                       case "electric":
                         return (
-                          <p className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900 ">
+                          <p className="bg-yellow-100 text-yellow-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900 ">
                             {pokeType.type.name}
                           </p>
                         );
                       case "grass":
                         return (
-                          <p className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 ">
+                          <p className="bg-green-100 text-green-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 ">
                             {pokeType.type.name}
                           </p>
                         );
                       case "poison":
                         return (
-                          <div className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">
+                          <div className=" bg-purple-100 text-purple-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">
                             {pokeType.type.name}
                           </div>
                         );
                       case "fairy":
                         return (
-                          <div className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900">
+                          <div className="bg-pink-100 text-pink-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900">
                             {pokeType.type.name}
                           </div>
                         );
                       default:
                         return (
-                          <div className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                          <div className="bg-gray-100 text-gray-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
                             {pokeType.type.name}
                           </div>
                         );

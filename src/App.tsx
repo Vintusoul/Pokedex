@@ -20,7 +20,6 @@ function App() {
     try {
       const response = await axios(ENDPOINT);
       setPokemon(pokemons.concat(response.data.results));
-      console.log("Pokemon", response.data.results);
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +27,6 @@ function App() {
 
   const HandleInput = (event: any) => {
     setInput(event.target.value);
-    console.log(searchInput);
   };
 
   const searchPokemon = async () => {

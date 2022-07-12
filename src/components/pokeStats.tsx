@@ -20,7 +20,6 @@ const PokeStats = (): JSX.Element => {
     axios(ENDPOINT)
       .then((response: any) => {
         setPokemon(response.data);
-        console.log("Pokemon", response.data.results);
       })
       .catch((error) => {
         <button>SOMETHING WENT WRONG</button>;
