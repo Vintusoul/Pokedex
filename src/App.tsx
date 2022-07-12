@@ -111,7 +111,7 @@ function App() {
                 <PokeCard
                   key={index}
                   title={pokemon.name}
-                  img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                  img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
                     pokemon.url.split("/")[6]
                   }.png`}
                   pokemonID={pokemon.url.split("/")[6]}

@@ -78,43 +78,64 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                     switch (pokeType.type.name) {
                       case "water":
                         return (
-                          <p className="bg-blue-100 text-blue-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                          <div
+                            key={index}
+                            className="bg-blue-100 text-blue-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800"
+                          >
                             {pokeType.type.name}
-                          </p>
+                          </div>
                         );
                       case "fire":
                         return (
-                          <p className="bg-red-800 text-red-100 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 ">
+                          <div
+                            key={index}
+                            className="bg-red-800 text-red-100 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 "
+                          >
                             {pokeType.type.name}
-                          </p>
+                          </div>
                         );
                       case "electric":
                         return (
-                          <p className="bg-yellow-100 text-yellow-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900 ">
+                          <div
+                            key={props.pokemonID}
+                            className="bg-yellow-100 text-yellow-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900 "
+                          >
                             {pokeType.type.name}
-                          </p>
+                          </div>
                         );
                       case "grass":
                         return (
-                          <p className="bg-green-100 text-green-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 ">
+                          <div
+                            key={props.pokemonID}
+                            className="bg-green-100 text-green-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 "
+                          >
                             {pokeType.type.name}
-                          </p>
+                          </div>
                         );
                       case "poison":
                         return (
-                          <div className=" bg-purple-100 text-purple-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">
+                          <div
+                            key={index}
+                            className=" bg-purple-100 text-purple-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900"
+                          >
                             {pokeType.type.name}
                           </div>
                         );
                       case "fairy":
                         return (
-                          <div className="bg-pink-100 text-pink-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900">
+                          <div
+                            key={index}
+                            className="bg-pink-100 text-pink-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900"
+                          >
                             {pokeType.type.name}
                           </div>
                         );
                       default:
                         return (
-                          <div className="bg-gray-100 text-gray-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                          <div
+                            key={index}
+                            className="bg-gray-100 text-gray-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                          >
                             {pokeType.type.name}
                           </div>
                         );
