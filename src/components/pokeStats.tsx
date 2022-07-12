@@ -1,13 +1,14 @@
 import axios from "axios";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./navbar";
-import { Link } from "react-router-dom";
 import "../App.css";
 import { Pokemon } from "./pokeCard";
 
 const PokeStats = (): JSX.Element => {
   let { id } = useParams();
+
+  const navigate = useNavigate();
 
   const [pokemon, setPokemon] = React.useState({} as Pokemon);
 
@@ -34,7 +35,7 @@ const PokeStats = (): JSX.Element => {
       <div className="w-full h-auto flex justify-center ">
         <div className=" font-pokemon flex flex-col items-center m-5 bg-yellow-300 rounded-lg border shadow-md md:flex-row  hover:bg-pokemon-light-blue hover:text-white lg:max-w-2xl">
           <div className="m-5 ">
-            <h5 className="mb-2 flex justify-center text-2xl font-bold tracking-tight ">
+            <h5 className="mb-2 flex justify-center text-2xl font-bold tracking-tight uppercase ">
               {pokemon.name}
             </h5>
             <img
@@ -45,8 +46,8 @@ const PokeStats = (): JSX.Element => {
           </div>
           <div className="flex flex-col w-full justify-between p-4 leading-normal">
             <p className="mb-3">
-              <div className="font-semibold ">Types:</div>
-              <p className=" mb-3 flex flew-row ">
+              <div className="font-semibold lg:text-lg ">Types:</div>
+              <p className=" mb-3 flex flew-row lg:text-lg  ">
                 {pokemon.types?.map(
                   (pokeType: {
                     type: {
@@ -100,31 +101,37 @@ const PokeStats = (): JSX.Element => {
                   }
                 )}
               </p>
-              <h2 className=" font-semibold ">Abilities:</h2>
-              <dt className=" mb-2  flex flex-row">
+              <h2 className=" font-semibold lg:text-lg  ">Abilities:</h2>
+              <div className=" mb-2  flex flex-col">
                 {pokemon.abilities?.map(
                   (pokeType: { ability: { name: string } }, _: any) => {
-                    return pokeType.ability.name.replace("-", " ");
+                    return (
+                      <div>
+                        {pokeType.ability.name.replace("-", " ")}
+                        <br />
+                      </div>
+                    );
                   }
                 )}
-              </dt>
-              <h2 className=" font-semibold ">Base Experience:</h2>
+              </div>
+              <h2 className=" font-semibold lg:text-lg ">Base Experience:</h2>
               <dt className=" flex flex-row">{pokemon.base_experience}</dt>
-              <h2 className=" font-semibold ">Weight:</h2>
+              <h2 className=" font-semibold lg:text-lg ">Weight:</h2>
               <dt className=" flex flex-row">{pokemon.weight}</dt>
-              <h2 className=" font-semibold ">Height</h2>
-              <dt className=" flex flex-row">{pokemon.height}</dt>
+              <h2 className=" font-semibold lg:text-lg ">Height</h2>
+              <dt className=" flex flex-row ">{pokemon.height}</dt>
             </p>
           </div>
         </div>
       </div>
 
       <div className="flex justify-center w-full">
-        <Link to="/">
-          <button className="mb-5 font-pokemon bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-            Return to Pokedex
-          </button>
-        </Link>
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-5 font-pokemon bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+        >
+          Return to Pokedex
+        </button>
       </div>
     </>
   );

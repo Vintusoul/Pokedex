@@ -41,6 +41,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
   // API Call
   React.useEffect(() => {
     getPokemonDetails();
+    // eslint-disable-next-line
   }, []);
 
   const getPokemonDetails = () => {
@@ -61,18 +62,18 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
         className=" hover:animate-wiggle font-pokemon text-md block p-4 rounded-lg shadow-md bg-yellow-300 shadow-pokemon-light-blue hover:bg-pokemon-light-blue hover:text-white "
       >
         <div>
-          <dd className="font-bold uppercase">{props.title}</dd>
+          <dd className="font-bold uppercase lg:text-xl">{props.title}</dd>
         </div>
         <img
           src={props.img}
           alt="pokemon"
-          className="w-full h-auto border-2	 border-slate-600 bg-slate-200 rounded"
+          className="w-full h-auto border-2	 border-slate-600 bg-slate-200 rounded  "
         ></img>
         <div className="mt-2">
-          <div className="sm:text-xs flex flex-col mt-6 lg:text-m">
+          <div className="sm:text-xs flex flex-col mt-6 lg:text-base">
             <div className="sm:ml-3 inline-flex flex-row sm:shrink-0">
               <div className="font-semibold">TYPES:</div>
-              <div className="sm: sm:inline-flex sm:mt-0">
+              <div className="sm:inline-flex ">
                 <dt className="ml-3 flex flex-row w-full justify-around ">
                   {pokemon.types?.map((pokeType, index) => {
                     switch (pokeType.type.name) {

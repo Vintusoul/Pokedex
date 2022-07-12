@@ -14,7 +14,7 @@ function App() {
 
   const getPokemons = async (page: number) => {
     const limit = 20;
-    const offset = page * limit;
+    const offset = page * limit - limit;
     let ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
     try {
