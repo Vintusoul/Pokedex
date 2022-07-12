@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className="max-w-7xl flex justify-center mx-auto px-2 sm:px-6 lg:px-8 flex-shrink-0 items-center relative h-16">
           <Link to="/">
             <img
-              className=" lg:block h-10 w-auto"
+              className=" lg:block h-10 lg:h-15 w-auto"
               src="/Pokemon.png"
               alt="Pokemon"
             />

@@ -1,14 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "./navbar";
 import "../App.css";
 import { Pokemon } from "./pokeCard";
 
 const PokeStats = (): JSX.Element => {
   let { id } = useParams();
-
-  const navigate = useNavigate();
 
   const [pokemon, setPokemon] = React.useState({} as Pokemon);
 
@@ -45,68 +43,92 @@ const PokeStats = (): JSX.Element => {
             ></img>
           </div>
           <div className="flex flex-col w-full justify-between p-4 leading-normal">
-            <p className="mb-3">
+            <div className="mb-3">
               <div className="font-semibold lg:text-lg ">Types:</div>
-              <p className=" mb-3 flex flew-row lg:text-lg  ">
+              <div className=" mb-3 flex flew-row lg:text-lg  ">
                 {pokemon.types?.map(
-                  (pokeType: {
-                    type: {
-                      name: string;
-                    };
-                  }) => {
+                  (
+                    pokeType: {
+                      type: {
+                        name: string;
+                      };
+                    },
+                    index
+                  ) => {
                     switch (pokeType.type.name) {
                       case "water":
                         return (
-                          <p className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+                          <p
+                            key={index}
+                            className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                          >
                             {pokeType.type.name}
                           </p>
                         );
                       case "fire":
                         return (
-                          <p className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded  ">
+                          <p
+                            key={index}
+                            className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded  "
+                          >
                             {pokeType.type.name}
                           </p>
                         );
                       case "electric":
                         return (
-                          <p className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded  ">
+                          <p
+                            key={index}
+                            className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded  "
+                          >
                             {pokeType.type.name}
                           </p>
                         );
                       case "grass":
                         return (
-                          <p className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
+                          <p
+                            key={index}
+                            className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded"
+                          >
                             {pokeType.type.name}
                           </p>
                         );
                       case "poison":
                         return (
-                          <div className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+                          <p
+                            key={index}
+                            className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                          >
                             {pokeType.type.name}
-                          </div>
+                          </p>
                         );
                       case "fairy":
                         return (
-                          <div className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+                          <p
+                            key={index}
+                            className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                          >
                             {pokeType.type.name}
-                          </div>
+                          </p>
                         );
                       default:
                         return (
-                          <div className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+                          <p
+                            key={index}
+                            className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                          >
                             {pokeType.type.name}
-                          </div>
+                          </p>
                         );
                     }
                   }
                 )}
-              </p>
+              </div>
               <h2 className=" font-semibold lg:text-lg  ">Abilities:</h2>
               <div className=" mb-2  flex flex-col">
                 {pokemon.abilities?.map(
-                  (pokeType: { ability: { name: string } }, _: any) => {
+                  (pokeType: { ability: { name: string } }, index: any) => {
                     return (
-                      <div>
+                      <div key={index}>
                         {pokeType.ability.name.replace("-", " ")}
                         <br />
                       </div>
@@ -120,7 +142,7 @@ const PokeStats = (): JSX.Element => {
               <dt className=" flex flex-row">{pokemon.weight}</dt>
               <h2 className=" font-semibold lg:text-lg ">Height</h2>
               <dt className=" flex flex-row ">{pokemon.height}</dt>
-            </p>
+            </div>
           </div>
         </div>
       </div>
