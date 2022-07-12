@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./navbar";
 import "../App.css";
 import { Pokemon } from "./pokeCard";
@@ -116,7 +116,7 @@ const PokeStats = (): JSX.Element => {
               </div>
               <h2 className=" font-semibold lg:text-lg ">Base Experience:</h2>
               <dt className=" flex flex-row">{pokemon.base_experience}</dt>
-              <h2 className=" font-semibold lg:text-lg ">Weight:</h2>
+              <h2 className=" font-semibold lg:text-lg  ">Weight:</h2>
               <dt className=" flex flex-row">{pokemon.weight}</dt>
               <h2 className=" font-semibold lg:text-lg ">Height</h2>
               <dt className=" flex flex-row ">{pokemon.height}</dt>
@@ -126,12 +126,11 @@ const PokeStats = (): JSX.Element => {
       </div>
 
       <div className="flex justify-center w-full">
-        <button
-          onClick={() => navigate(-1)}
-          className="mb-5 font-pokemon bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-        >
-          Return to Pokedex
-        </button>
+        <Link to="/">
+          <button className="mb-5 font-pokemon bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Return to Pokedex
+          </button>
+        </Link>
       </div>
     </>
   );
