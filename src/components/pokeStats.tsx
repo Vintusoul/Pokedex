@@ -44,7 +44,9 @@ const PokeStats = (): JSX.Element => {
           </div>
           <div className="flex flex-col w-full justify-between p-4 leading-normal">
             <div className="mb-3">
-              <div className="font-semibold lg:text-lg mb-2">Types:</div>
+              <div className="font-semibold lg:text-lg mb-2 xl:text-xl">
+                Types:
+              </div>
               <div className=" mb-3 flex flew-row lg:text-lg  ">
                 {pokemon.types?.map(
                   (
@@ -60,7 +62,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </p>
@@ -69,7 +71,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded  "
+                            className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </p>
@@ -78,7 +80,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded  "
+                            className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </p>
@@ -87,7 +89,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded"
+                            className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </p>
@@ -96,7 +98,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                            className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </p>
@@ -105,7 +107,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </p>
@@ -114,7 +116,7 @@ const PokeStats = (): JSX.Element => {
                         return (
                           <p
                             key={index}
-                            className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </p>
@@ -123,8 +125,10 @@ const PokeStats = (): JSX.Element => {
                   }
                 )}
               </div>
-              <h2 className=" font-semibold lg:text-lg  ">Abilities:</h2>
-              <div className=" mb-2 flex flex-col">
+              <h2 className=" font-semibold lg:text-lg xl:text-xl ">
+                Abilities:
+              </h2>
+              <div className=" mb-2 flex flex-col lg:text-base ">
                 {pokemon.abilities?.map(
                   (pokeType: { ability: { name: string } }, index: any) => {
                     return (
@@ -136,12 +140,16 @@ const PokeStats = (): JSX.Element => {
                   }
                 )}
               </div>
-              <h2 className=" font-semibold lg:text-lg ">Base Experience:</h2>
-              <dt className=" flex flex-row">{pokemon.base_experience}</dt>
-              <h2 className=" font-semibold lg:text-lg  ">Weight:</h2>
-              <dt className=" flex flex-row">{pokemon.weight}</dt>
-              <h2 className=" font-semibold lg:text-lg ">Height</h2>
-              <dt className=" flex flex-row ">{pokemon.height}</dt>
+              <h2 className=" font-semibold lg:text-lg xl:text-xl ">
+                Base Experience:
+              </h2>
+              <dt className=" flex flex-row lg:text-base">
+                {pokemon.base_experience}
+              </dt>
+              <h2 className=" font-semibold lg:text-lg xl:text-xl ">Weight:</h2>
+              <dt className=" flex flex-row lg:text-base ">{pokemon.weight}</dt>
+              <h2 className=" font-semibold lg:text-lg xl:text-xl">Height</h2>
+              <dt className=" flex flex-row lg:text-base ">{pokemon.height}</dt>
             </div>
           </div>
         </div>
@@ -149,7 +157,7 @@ const PokeStats = (): JSX.Element => {
 
       <div className="flex justify-center w-full">
         <Link to="/">
-          <button className="mb-5 font-pokemon bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded">
+          <button className="mb-5 font-pokemon bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded xl:text-xl">
             Return to Pokedex
           </button>
         </Link>

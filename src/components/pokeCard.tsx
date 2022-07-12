@@ -72,7 +72,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
         <div className="mt-2">
           <div className="sm:text-xs flex flex-col mt-6 lg:text-base">
             <div className="sm:ml-3 inline-flex flex-row sm:shrink-0">
-              <div className="font-semibold">TYPES:</div>
+              <div className="font-semibold lg:text-lg">TYPES:</div>
               <div className="sm:inline-flex ">
                 <dt className="ml-3 flex flex-row w-full justify-around ">
                   {pokemon.types?.map((pokeType, index) => {
@@ -81,7 +81,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className="bg-blue-100 text-blue-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-blue-100 text-blue-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </div>
@@ -90,7 +90,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className="bg-red-800 text-red-100 text-sm font-bold mr-2 px-2.5 py-0.5 rounded  "
+                            className="bg-red-800 text-red-100 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </div>
@@ -99,7 +99,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className="bg-yellow-100 text-yellow-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-yellow-100 text-yellow-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </div>
@@ -108,7 +108,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className="bg-green-100 text-green-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-green-100 text-green-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base "
                           >
                             {pokeType.type.name}
                           </div>
@@ -117,7 +117,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className=" bg-purple-100 text-purple-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded "
+                            className=" bg-purple-100 text-purple-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </div>
@@ -126,7 +126,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className="bg-pink-100 text-pink-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-pink-100 text-pink-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </div>
@@ -135,7 +135,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
                         return (
                           <div
                             key={index}
-                            className="bg-gray-100 text-gray-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded "
+                            className="bg-gray-100 text-gray-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base"
                           >
                             {pokeType.type.name}
                           </div>
@@ -146,7 +146,9 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
               </div>
             </div>
             <div className="sm:inline-flex sm:items-center sm:mt-3 sm:shrink-0"></div>
-            <div className="mt-4 font-semibold ">Click for more info...</div>
+            <div className="mt-4 font-semibold lg:text-base">
+              Click for more info...
+            </div>
           </div>
         </div>
       </Link>
