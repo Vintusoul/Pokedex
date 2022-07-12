@@ -57,7 +57,7 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
     <div>
       <Link
         to={`/pokemon/${props.pokemonID}`}
-        className="block p-4 rounded-lg shadow-sm bg-red-200 shadow-red-700"
+        className=" block p-4 rounded-lg shadow-sm bg-red-200 shadow-red-700"
       >
         <img
           src={props.img}

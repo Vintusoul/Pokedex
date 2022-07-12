@@ -29,110 +29,95 @@ const PokeStats = (): JSX.Element => {
   };
   // Card styling and details
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen bg-red-200">
       <Navbar />
-      <a href="/" className="w-full flex justify-center h-full">
-        <div className="w-5/12">
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-            alt="pokemon"
-            className="w-full h-auto rounded-md"
-          ></img>
-          <div className="mt-2">
-            <div>
-              <dd className="font-medium uppercase">{pokemon.name}</dd>
-            </div>
-            <div className="sm: text-xs flex flex-col mt-6 lg: text-m">
-              <div className="sm:inline-flex flex flex-row sm:shrink-0">
-                <div>TYPES:</div>
-                <div className="sm:ml-3 sm:inline-flex mt-1.5 sm:mt-0">
-                  <dt className="text-gray-500">
-                    {pokemon.types?.map(
-                      (pokeType: {
-                        type: {
-                          name: string;
-                        };
-                      }) => {
-                        switch (pokeType.type.name) {
-                          case "water":
-                            return (
-                              <p className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-                                {pokeType.type.name}
-                              </p>
-                            );
-                          case "fire":
-                            return (
-                              <p className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 ">
-                                {pokeType.type.name}
-                              </p>
-                            );
-                          case "electric":
-                            return (
-                              <p className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900 ">
-                                {pokeType.type.name}
-                              </p>
-                            );
-                          case "grass":
-                            return (
-                              <p className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 ">
-                                {pokeType.type.name}
-                              </p>
-                            );
-                          case "poison":
-                            return (
-                              <div className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">
-                                {pokeType.type.name}
-                              </div>
-                            );
-                          case "fairy":
-                            return (
-                              <div className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900">
-                                {pokeType.type.name}
-                              </div>
-                            );
-                          default:
-                            return (
-                              <div className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                                {pokeType.type.name}
-                              </div>
-                            );
-                        }
-                      }
-                    )}
-                  </dt>
-                </div>
-              </div>
-
-              <div className="sm:inline-flex sm:items-center sm:mt-3 sm:shrink-0">
-                <div className="sm:ml-3 mt-1.5 sm:mt-0">
-                  {" "}
-                  Abilities:
-                  <dt className="text-gray-600 mb-1.5 flex flex-row">
-                    {pokemon.abilities?.map(
-                      (pokeType: { ability: { name: string } }, _: any) => {
-                        return pokeType.ability.name.replace("-", " ");
-                      }
-                    )}
-                  </dt>
-                  Stats:
-                  <dt className="text-gray-600 flex flex-row">
-                    {pokemon.base_experience}
-                  </dt>
-                  Weight:
-                  <dt className="text-gray-600 flex flex-row">
-                    {pokemon.weight}
-                  </dt>
-                  Height:
-                  <dt className="text-gray-600 flex flex-row">
-                    {pokemon.height}
-                  </dt>
-                </div>
-              </div>
-              <div className="mt-4">
-                <div className="text-white font-bold">Click to return</div>
-              </div>
-            </div>
-          </div>
+      {/* new idea */}
+      <a
+        href="/"
+        className="flex flex-col items-center m-5 bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 lg:max-w-2xl"
+      >
+        <img
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+          alt="pokemon"
+          className="w-full h-auto rounded-md"
+        ></img>
+        <div className="flex flex-col justify-between p-4 leading-normal">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {pokemon.name}
+          </h5>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <div className="font-semibold ">Types:</div>
+            <p className=" mb-3 ">
+              {pokemon.types?.map(
+                (pokeType: {
+                  type: {
+                    name: string;
+                  };
+                }) => {
+                  switch (pokeType.type.name) {
+                    case "water":
+                      return (
+                        <p className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                          {pokeType.type.name}
+                        </p>
+                      );
+                    case "fire":
+                      return (
+                        <p className="bg-red-800 text-red-100 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-200 ">
+                          {pokeType.type.name}
+                        </p>
+                      );
+                    case "electric":
+                      return (
+                        <p className="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900 ">
+                          {pokeType.type.name}
+                        </p>
+                      );
+                    case "grass":
+                      return (
+                        <p className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900 ">
+                          {pokeType.type.name}
+                        </p>
+                      );
+                    case "poison":
+                      return (
+                        <div className=" bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">
+                          {pokeType.type.name}
+                        </div>
+                      );
+                    case "fairy":
+                      return (
+                        <div className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900">
+                          {pokeType.type.name}
+                        </div>
+                      );
+                    default:
+                      return (
+                        <div className="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                          {pokeType.type.name}
+                        </div>
+                      );
+                  }
+                }
+              )}
+            </p>
+            <h2 className=" font-semibold ">Abilities:</h2>
+            <dt className=" mb-2 text-gray-600 flex flex-row">
+              {pokemon.abilities?.map(
+                (pokeType: { ability: { name: string } }, _: any) => {
+                  return pokeType.ability.name.replace("-", " ");
+                }
+              )}
+            </dt>
+            <h2 className=" font-semibold ">Base Experience:</h2>
+            <dt className="text-gray-600 flex flex-row">
+              {pokemon.base_experience}
+            </dt>
+            <h2 className=" font-semibold ">Weight:</h2>
+            <dt className="text-gray-600 flex flex-row">{pokemon.weight}</dt>
+            <h2 className=" font-semibold ">Height</h2>
+            <dt className="text-gray-600 flex flex-row">{pokemon.height}</dt>
+          </p>
         </div>
       </a>
     </div>
