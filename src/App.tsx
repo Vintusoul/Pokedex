@@ -48,12 +48,13 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className="bg-gray-800 w-full flex justify-center border-cyan-50">
-        <div className=" w-11/12 input-group relative flex items-stretch mb-4 rounded">
+      {/* Searchbar */}
+      <div className="bg-gray-800 w-full h-auto flex justify-center border-cyan-50">
+        <div className="w-11/12 input-group flex items-stretch mb-4 rounded xl:h-1/6 xxl:h-20 ">
           <input
             id="searchInput"
             type="search"
-            className=" lg:text-lg font-pokemon form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal  bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-800 focus:bg-white focus:border-blue-600 focus:outline-none"
+            className="rounded-r-none border-pokemon-light-blue border-4 lg:text-lg font-pokemon form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal  bg-white bg-clip-padding  border-solid rounded transition ease-in-out m-0 xl:text-xl"
             placeholder="Search Pokemon"
             aria-label="Search"
             aria-describedby="button-addon2"
@@ -66,7 +67,7 @@ function App() {
             }}
           ></input>
           <button
-            className="hover:bg-slate-500 cursor-grab bg-pokemon-light-blue input-group-text flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded"
+            className="hover:bg-slate-500 cursor-grab w-35 rounded-l-none bg-pokemon-light-blue input-group-text flex justify-center items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded xl:w-40 "
             id="searchButton"
             onClick={() => searchPokemon()}
           >

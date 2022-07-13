@@ -128,7 +128,7 @@ const PokeStats = (): JSX.Element => {
               <h2 className=" font-semibold lg:text-lg xl:text-xl ">
                 Abilities:
               </h2>
-              <div className=" mb-2 flex flex-col lg:text-base ">
+              <div className=" mb-2 flex flex-col lg:text-base  ">
                 {pokemon.abilities?.map(
                   (pokeType: { ability: { name: string } }, index: any) => {
                     return (

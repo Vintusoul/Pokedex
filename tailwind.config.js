@@ -5,16 +5,17 @@ module.exports = {
     screens: {
       sm: "448px",
       // => @media (min-width: 448px) { ... }
+
       md: "680px",
       // => @media (min-width: 680px) { ... }
 
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 
-      xl: "1280px",
+      xl: "1440px",
       // => @media (min-width: 1280px) { ... }
 
-      "2xl": "1536px",
+      xxl: "1536px",
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
