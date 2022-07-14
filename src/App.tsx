@@ -6,12 +6,15 @@ import Logo from "./components/logoPng";
 import InfiniteScroll from "react-infinite-scroller";
 import Loader from "./components/loader";
 import SearchSvg from "./components/searchSvg";
+// import Navbar from "./components/States/StickyNav";
 import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
   const [pokemons, setPokemon] = React.useState([] as Array<Util>);
   const [searchInput, setInput] = React.useState("");
+
+  // Api Call for Pokemon
 
   const getPokemons = async (page: number) => {
     const limit = 20;

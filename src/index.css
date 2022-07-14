@@ -23,7 +23,7 @@ code {
     }
      /* Search Bar */
     .searchContainer{
-    @apply bg-gray-800 w-full h-auto flex justify-center font-pokemon lg:h-1/3 xxl:bg-pokemon-light-blue;
+    @apply sticky top-0 pt-5 pb-5 bg-gray-800 w-full h-auto flex justify-center font-pokemon lg:h-1/3 xxl:bg-pokemon-light-blue;
      }
 
     .searchWrapper{
