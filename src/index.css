@@ -8,12 +8,17 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: rgb(31 41 55);
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input{
+  border: none;
 }
 
 @layer {
@@ -23,7 +28,7 @@ code {
     }
      /* Search Bar */
     .searchContainer{
-    @apply sticky top-0 pt-5 pb-5 bg-gray-800 w-full h-auto flex justify-center font-pokemon lg:h-1/3 xxl:bg-pokemon-light-blue;
+    @apply ease-in-out sticky h-auto top-0 pt-5 pb-5 bg-inherit w-full flex justify-center font-pokemon  ;
      }
 
     .searchWrapper{
@@ -31,29 +36,34 @@ code {
      }
 
     input{
-    @apply rounded-r-none rounded-md border-pokemon-light-blue border-4 lg:text-lg flex-auto w-full text-base bg-white bg-clip-padding  border-solid xl:text-2xl ;
+    @apply rounded-r-none p-5 rounded-md  border-4 lg:text-lg flex-auto w-full text-base bg-white bg-clip-padding border-none xl:text-2xl ;
     };
 
    .searchBtnWrapper{
-    @apply hover:bg-slate-500 cursor-grab w-2/5 rounded-l-none h-full  flex justify-center items-center px-3 py-1.5 text-center bg-pokemon-light-blue;
+    @apply hover:fill-black z-10 cursor-grab w-2/5 rounded-l-none h-full  flex justify-center items-center px-3 py-1.5 text-center ;
    }
 
     .searchSvg{
-    @apply w-4 xl:w-6 ;
+    @apply w-4 xl:w-6 z-10  ;
    }
 
   /* Pokemon App.tsx Grid */
   .pokemonCardGrid{
-    @apply snap-y snap-proximity mt-5 gap-6 grid grid-cols-1 grid-flow-row-dense m-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ;
+    @apply  mt-5 gap-6 grid grid-cols-1 grid-flow-row-dense m-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ;
   }
 
   /* Pokemon Card */
   .pokemonCardContainer{
-  @apply snap-center hover:text-white;
+  @apply hover:text-white bg-yellow-300 shadow-pokemon-light-blue hover:bg-pokemon-light-blue rounded-md;
+  }
+
+  /* Card Type Colours */
+  .pokeCardFire{
+  @apply hover:text-white bg-red-300 shadow-red-600 hover:bg-pokemon-light-blue rounded-md
   }
 
   .pokemonCardWrapper{
-  @apply font-pokemon block p-4 rounded-lg shadow-md bg-yellow-300 shadow-pokemon-light-blue hover:bg-pokemon-light-blue ;
+  @apply snap-start  font-pokemon block p-4 rounded-lg shadow-md  ;
   }
 
   .pokemonCardTitle{
@@ -115,7 +125,7 @@ code {
     @apply bg-pink-100 text-pink-800 text-sm font-bold mr-2 px-2.5 py-0.5 rounded lg:text-base xl:text-lg ;
   }
 
-  /* Pokemon Card Click for more info */
+  /* Pokemon Card Click for more info__PokeStats File */
   .pokemonCardMoreInfo{
     @apply mt-4 font-semibold lg:text-base;
   }
@@ -127,11 +137,11 @@ code {
   }
 
   .pokemonInfoWrapper{
-    @apply  font-pokemon flex flex-col items-center m-5 rounded-lg border shadow-md md:flex-row  bg-pokemon-light-blue text-white lg:max-w-2xl;
+    @apply  font-pokemon flex flex-col items-center m-5 rounded-lg  shadow-md md:flex-row  bg-pokemon-light-blue text-white w-auto;
 
   }
   .pokemonInfoNameAndImageHolder{
-    @apply m-5 font-bold tracking-tight uppercase text-2xl;
+    @apply m-5 font-bold tracking-tight border uppercase text-2xl;
   }
 
   .pokemonInfoName{

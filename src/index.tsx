@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokeStats from "./components/pokeStats";
 import reportWebVitals from "./reportWebVitals";
+// import AppCopy from "./App test";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

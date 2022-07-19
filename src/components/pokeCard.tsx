@@ -58,9 +58,9 @@ const PokeCard = (props: PokeCardProps): JSX.Element => {
   };
 
   return (
-    <div className="pokemonCardContainer">
+    <div id="background" className="pokemonCardContainer">
       <Link to={`/pokemon/${props.pokemonID}`} className="pokemonCardWrapper">
-        {/* Pokemon Title */}
+        {/* Pokemon */}
         <div>
           <div className="pokemonCardTitle">{props.title}</div>
         </div>
