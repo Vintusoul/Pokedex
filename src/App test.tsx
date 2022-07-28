@@ -95,19 +95,19 @@ function AppCopy() {
             aria-describedby="button-addon2"
             value={searchInput.toLocaleLowerCase()}
             onChange={HandleInput}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                searchPokemon();
-              }
-            }}
+            // onKeyDown={(e) => {
+            //   if (e.key === "Enter") {
+            //     searchPokemon();
+            //   }
+            // }}
           ></input>
-          <button
+          {/* <button
             className="searchBtnWrapper"
             id="searchButton"
             onClick={() => searchPokemon()}
           >
             <SearchSvg />
-          </button>
+          </button> */}
         </div>
       </div>
 
