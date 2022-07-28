@@ -36,7 +36,7 @@ input{
      }
 
     input{
-    @apply rounded-r-none p-5 rounded-md  border-4 lg:text-lg flex-auto w-full text-base bg-white bg-clip-padding border-none xl:text-2xl ;
+    @apply focus:outline-none rounded-r-none p-5 rounded-md  border-4 lg:text-lg flex-auto w-full text-base bg-white bg-clip-padding border-none xl:text-2xl ;
     };
 
    .searchBtnWrapper{
