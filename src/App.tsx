@@ -9,74 +9,68 @@ import SearchSvg from "./components/searchSvg";
 import Alert from "./components/alert";
 // import Navbar from "./components/States/StickyNav";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Pokemon } from "./components/pokeCard";
 
-function AppCopy() {
+const LIMIT = 20;
+const ENDPOINT = "https://pokeapi.co/api/v2/pokemon";
+
+const AppCopy = () => {
   const navigate = useNavigate();
-  const [pokemons, setPokemon] = React.useState([] as Array<Util>);
-  const [searchInput, setInput] = React.useState("");
-  const [loadMore, setLoadMore] = React.useState(true);
-
-  const [pokemonSearch, setPokemonSearch] = React.useState([] as Array<Util>);
+  const [pokemons, setPokemon] = useState<Pokemon[]>([]);
+  const [searchInput, setInput] = useState<string>("");
+  const [loadMore, setLoadMore] = useState<boolean>(true);
+  const [pokemonSearch, setPokemonSearch] = useState<Pokemon[]>([]);
 
   useEffect(() => {
-    getPokemonAll();
-    console.log(pokemonSearch);
+    getPokemonAll(1);
+    // eslint-disable-next-line
   }, []);
 
-  const getPokemonAll = async () => {
-    let ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=10000`;
-
+  const getPokemonAll = async (page: number) => {
+    const offset = page * LIMIT - LIMIT;
     try {
-      const response = await axios(ENDPOINT);
+      const response = await axios(
+        `${ENDPOINT}?limit=${LIMIT}&offset=${offset}`
+      );
       setPokemonSearch(response.data.results);
+      setPokemon([...pokemons, ...response.data.results]);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      <Alert />;
     }
   };
-  // Api Call for Pokemon
 
   const getPokemons = async (page: number) => {
-    const limit = 20;
-    const offset = page * limit - limit;
-    let ENDPOINT = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-
+    const offset = page * LIMIT - LIMIT;
     try {
-      const response = await axios(ENDPOINT);
-      setPokemon(pokemons.concat(response.data.results));
+      const response = await axios(
+        `${ENDPOINT}?limit=${LIMIT}&offset=${offset}`
+      );
+      setPokemon([...pokemons, ...response.data.results]);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      <Alert />;
     }
   };
 
-  const HandleInput = async (event: any) => {
-    setInput(event.target.value);
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.toLocaleLowerCase();
+    setInput(value);
 
-    const searchedPokemonArray = pokemonSearch.filter((poke, i) =>
-      poke.name.includes(event.target.value)
+    const searchedPokemonArray = pokemonSearch.filter((poke) =>
+      poke.name.includes(value)
     );
 
-    if (event.target.value.length <= 0) {
-      setLoadMore(true);
-    } else {
-      setLoadMore(false);
-    }
-
-    console.log(searchedPokemonArray);
+    setLoadMore(value.length <= 0);
     setPokemon(searchedPokemonArray);
   };
 
-  const searchPokemon = async () => {
-    let ENDPOINT = `https://pokeapi.co/api/v2/pokemon/${searchInput}`;
-
+  const searchPokemon = async (pokemonName: string) => {
     try {
-      const response = await axios(ENDPOINT);
-      if (response.data.id) {
-        navigate(`/pokemon/${response.data.id}`);
-      } else {
-        <Alert />;
-      }
-    } catch (error) {
-      console.log(error);
+      await axios(`${ENDPOINT}/${pokemonName}`);
+    } catch (error: any) {
+      console.error(error);
       <Alert />;
     }
   };
@@ -93,18 +87,18 @@ function AppCopy() {
             placeholder="Search Pokemon"
             aria-label="Search"
             aria-describedby="button-addon2"
-            value={searchInput.toLocaleLowerCase()}
-            onChange={HandleInput}
+            value={searchInput}
+            onChange={(e) => handleInput(e)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                searchPokemon();
+                searchPokemon(e.currentTarget.value);
               }
             }}
           ></input>
           <button
             className="searchBtnWrapper"
             id="searchButton"
-            onClick={() => searchPokemon()}
+            onClick={() => searchPokemon(searchInput)}
           >
             <SearchSvg />
           </button>
@@ -128,7 +122,7 @@ function AppCopy() {
               <button>SOMETHING WENT WRONG</button>
             </div>
           ) : (
-            pokemons.map((pokemon: { url: string; name: string }, index) => {
+            pokemons.map((pokemon: Pokemon, index) => {
               return (
                 <PokeCard
                   key={index}
@@ -145,6 +139,6 @@ function AppCopy() {
       </InfiniteScroll>
     </div>
   );
-}
+};
 
 export default AppCopy;

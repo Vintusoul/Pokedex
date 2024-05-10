@@ -21,6 +21,19 @@ input{
   border: none;
 }
 
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#typeFilter {
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 @layer {
     /* Default loader */
     .loader{

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 interface PokeCardProps {
@@ -25,6 +25,7 @@ interface PokemonType {
 }
 
 export interface Pokemon {
+  url: any;
   stats: any;
   abilities: Array<PokemonAbility>;
   base_experience: number;
@@ -37,35 +38,47 @@ export interface Pokemon {
 }
 
 const PokeCard = (props: PokeCardProps): JSX.Element => {
-  const [pokemon, setPokemon] = React.useState({} as Pokemon);
+  const [pokemon, setPokemon] = useState({} as Pokemon);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getPokemonDetails();
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // API Call
-  const getPokemonDetails = () => {
+  /**
+   * Fetches the details of a pokemon
+   * @returns void
+   */
+  const getPokemonDetails = async () => {
     const ENDPOINT = `https://pokeapi.co/api/v2/pokemon/${props.pokemonID}`;
-    axios(ENDPOINT)
-      .then((response: any) => {
-        setPokemon(response.data);
-      })
-      .catch((error) => {
-        <button>SOMETHING WENT WRONG</button>;
-        console.log(error);
-      });
+
+    try {
+      const response = await axios(ENDPOINT);
+      setPokemon(response.data);
+    } catch (error) {
+      <button>SOMETHING WENT WRONG</button>;
+      console.log(error);
+    }
   };
 
   return (
-    <div id="background" className="pokemonCardContainer">
+    <div
+      id="background"
+      className="pokemonCardContainer rounded-xl shadow-lg overflow-hidden"
+    >
       <Link to={`/pokemon/${props.pokemonID}`} className="pokemonCardWrapper">
+        {/* Pokemon Image */}
+        <div className="w-full h-48 flex items-center justify-center">
+          <img
+            src={props.img}
+            alt="pokemon"
+            className="pokemonCardImage w-32 h-32"
+          ></img>
+        </div>
         {/* Pokemon */}
         <div>
           <div className="pokemonCardTitle">{props.title}</div>
         </div>
-        {/* Pokemon Image */}
-        <img src={props.img} alt="pokemon" className="pokemonCardImage"></img>
         <div className="mt-2">
           <div className="pokemonCardTypesWrapper">
             <div className="pokemonCardTypesHolder">

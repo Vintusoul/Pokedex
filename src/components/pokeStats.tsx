@@ -4,13 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "./logoPng";
 import "../App.css";
 import { Pokemon } from "./pokeCard";
+import { useEffect, useState } from "react";
 
 const PokeStats = (): JSX.Element => {
   let { id } = useParams();
 
-  const [pokemon, setPokemon] = React.useState({} as Pokemon);
+  const [pokemon, setPokemon] = useState({} as Pokemon);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getPokemonDetails();
     // eslint-disable-next-line
   }, []);
@@ -32,65 +33,6 @@ const PokeStats = (): JSX.Element => {
       <Navbar />
       {/* change background to type */}
       <div className="pokemonInfoContainer">
-        {/* {pokemon.types?.map((pokeType, index) => {
-                  switch (pokeType.type.name) {
-                    case "water":
-                      return (
-                        <div key={index} className="waterBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    case "fire":
-                      return (
-                        <div key={index} className="fireBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    case "electric":
-                      return (
-                        <div key={index} className="electricBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    case "ground":
-                      return (
-                        <div key={index} className="groundBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    case "grass":
-                      return (
-                        <div key={index} className="grassBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    case "bug":
-                      return (
-                        <div key={index} className="grassBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    case "poison":
-                      return (
-                        <div key={index} className="poisonBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-
-                    case "fairy":
-                      return (
-                        <div key={index} className="fairyBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                    default:
-                      return (
-                        <div key={index} className="defaultBadge">
-                          {pokeType.type.name}
-                        </div>
-                      );
-                  }
-                })} */}
         <div className="pokemonInfoWrapper">
           <div className="pokemonInfoNameAndImageHolder ">
             <h5 className="pokemonInfoName">{pokemon.name}</h5>
